@@ -18,4 +18,4 @@ class ApiError extends Error{
     }
 }
 
-export default  new ApiError();
+module.exports = new ApiError();
