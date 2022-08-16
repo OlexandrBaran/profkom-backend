@@ -1,5 +1,5 @@
 const {QuestionAnswer} = require('../models/models')
-const ApiError = require('../error/ApiError');
+//const ApiError = require('../error/ApiError');
 
 class QuestionAnswerController {
     async create(req, res) {
@@ -9,7 +9,7 @@ class QuestionAnswerController {
             res.json(questionAnswer); 
 
             } catch (error) {
-                next(ApiError.badRequest(error.message))
+               // next(ApiError.badRequest(error.message))
             }
     }
 

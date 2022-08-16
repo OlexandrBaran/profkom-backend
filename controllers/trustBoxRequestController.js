@@ -1,5 +1,5 @@
 const {TrustBoxRequest} = require('../models/models')
-const ApiError = require('../error/ApiError');
+//const ApiError = require('../error/ApiError');
 
 class TrustBoxRequestController {
     async create(req, res, next) {
@@ -8,7 +8,7 @@ class TrustBoxRequestController {
             const trustBoxReq = TrustBoxRequest.create({ department, title, description});
             res.json(trustBoxReq);  
         } catch (error) {
-            next(ApiError.badRequest(error.message))
+          //  next(ApiError.badRequest(error.message))
         };
     }
 

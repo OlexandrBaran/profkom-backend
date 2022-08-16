@@ -1,5 +1,5 @@
 const {Chummery} = require('../models/models')
-const ApiError = require('../error/ApiError');
+//const ApiError = require('../error/ApiError');
 const uuid = require('uuid');
 const path = require('path')
 
@@ -39,7 +39,7 @@ class ChummeryController {
             res.json(chummery);
 
         } catch (error) {
-            next(ApiError.badRequest(error.message))  
+            //next(ApiError.badRequest(error.message))  
         }
     }
 

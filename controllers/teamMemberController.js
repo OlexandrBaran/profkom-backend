@@ -1,5 +1,5 @@
 const {TeamMember} = require('../models/models')
-const ApiError = require('../error/ApiError');
+//const ApiError = require('../error/ApiError');
 const uuid = require('uuid');
 const path = require('path')
 
@@ -49,7 +49,7 @@ class TeamMemberController {
                 res.json(teamMember); 
 
             } catch (error) {
-                    next(ApiError.badRequest(error.message))
+               //     next(ApiError.badRequest(error.message))
             }
         
     }

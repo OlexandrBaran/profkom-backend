@@ -1,7 +1,7 @@
 const {AdditionalPointsRequest} = require('../models/models')
 const uuid = require('uuid');
 const path = require('path')
-const ApiError = require('../error/ApiError');
+//const ApiError = require('../error/ApiError');
 
 class AdditionalPointsRequestController {
     async create(req, res, next) {
@@ -16,7 +16,7 @@ class AdditionalPointsRequestController {
             });
             res.json(addPointReq);
         } catch (error) {
-            next(ApiError.badRequest(error.message))
+          //  next(ApiError.badRequest(error.message))
         }
     }
 

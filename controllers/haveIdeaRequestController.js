@@ -1,5 +1,5 @@
 const {HaveIdeaRequest} = require('../models/models')
-const ApiError = require('../error/ApiError');
+//const ApiError = require('../error/ApiError');
 
 class HaveIdeaController {
     async create(req, res, next) {
@@ -8,7 +8,7 @@ class HaveIdeaController {
             const haveIdeaReq = HaveIdeaRequest.create({ name, email, department, theme, description});
             res.json(haveIdeaReq);
         } catch (error) {
-            next(ApiError.badRequest(error.message))
+           // next(ApiError.badRequest(error.message))
         }
 
     }

@@ -1,5 +1,5 @@
 const {AdditionalPointsResult} = require('../models/models')
-const ApiError = require('../error/ApiError');
+//const ApiError = require('../error/ApiError');
 const uuid = require('uuid');
 const path = require('path')
 
@@ -14,7 +14,7 @@ class AdditionalPointsResultController {
             const addPointRes = AdditionalPointsResult.create({department, title, file:fileName});
             res.json(addPointRes);
         } catch (error) {
-            next(ApiError.badRequest(error.message))
+          //  next(ApiError.badRequest(error.message))
         }  
     }
 

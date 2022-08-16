@@ -1,5 +1,5 @@
 const {Rating} = require('../models/models')
-const ApiError = require('../error/ApiError');
+//const ApiError = require('../error/ApiError');
 const uuid = require('uuid');
 const path = require('path')
 
@@ -15,7 +15,7 @@ class RatingController {
 
             res.json(rating);
         } catch (error) {
-            next(ApiError.badRequest(error.message))
+           // next(ApiError.badRequest(error.message))
         }
     }
 

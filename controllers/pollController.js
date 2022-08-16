@@ -1,5 +1,5 @@
 const {Poll} = require('../models/models')
-const ApiError = require('../error/ApiError');
+//const ApiError = require('../error/ApiError');
 
 class PollController {
     async create(req, res, next) {
@@ -34,7 +34,7 @@ class PollController {
             )
             res.json(poll)
         } catch (error) {
-            next(ApiError.badRequest(error.message))
+            //next(ApiError.badRequest(error.message))
         }
     }
 
