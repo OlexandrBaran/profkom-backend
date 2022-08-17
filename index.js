@@ -21,11 +21,12 @@ app.use(fileUpload({}));
 app.use('/', router);
 
 if (process.env.NODE_ENV === "production") {
-    const root = require('path').join(__dirname, 'client', 'build')
-    app.use(express.static(root));
+    app.use(express.static(path.join(__dirname, 'front/build/static')))
+    
     app.get("*", (req, res) => {
-        res.sendFile('index.html', { root });
-    })
+    res.sendFile(path.join(__dirname, 'front/build/index.html'));
+   
+  });
 }
 
 
