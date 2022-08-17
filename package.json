@@ -11,7 +11,7 @@
     "dev": "nodemon index.js",
     "start": "node index.js",
     "build:deploy": "cross-env NODE_ENV=production",
-    "heroku-postbuild": "cd front && npm install && npm run build"
+    "heroku-postbuild": "cd front && npm install && npm install serve && npx serve -s build"
   },
   "author": "",
   "license": "ISC",
