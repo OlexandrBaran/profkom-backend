@@ -49,6 +49,7 @@ const loadingMarkup = (
 
 
 root.render(
+  <div>
   <Suspense fallback={loadingMarkup}>
     <Context.Provider value={{
       appTheme: new ThemeStore(),
@@ -68,5 +69,5 @@ root.render(
     > 
       <App />
     </Context.Provider>
-  </Suspense>
+  </Suspense></div>
 );
