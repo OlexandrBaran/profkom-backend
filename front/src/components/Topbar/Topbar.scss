@@ -1,0 +1,29 @@
+.Topbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 3em;
+
+    .numbersContainer span{
+        padding-left: 5px;
+    }
+
+    .form-check-input:focus {
+        border-color: red;
+        outline: 0;
+        box-shadow: 0 0 0 rgb(13 110 253 / 25%);
+    }
+
+}
+
+.specialButtons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &.item{
+        margin: 5em;
+    }
+    
+}
+
