@@ -16,15 +16,15 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.resolve(__dirname, 'static')))
+app.use(express.static(path.resolve(__dirname, 'public')))
 app.use(fileUpload({}));
 app.use('/', router);
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, 'front/build/static')))
+    app.use(express.static(path.join(__dirname, 'public')))
     
-    app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, 'front/build/index.html'));
+    app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/index.html'));
    
   });
 }
