@@ -9,7 +9,7 @@ const SocProgramsBlock = ({bgColor, mainColor}) => {
     const {t} = useTranslation()
     return (
         <Container style={{backgroundColor:bgColor, color:mainColor, maxWidth:'100%'}}  >
-            <h2 className="text-center">{t('services')}</h2>
+            <h2 className="text-center">{t('services')}frrfefewdwdweedwdw</h2>
             <Row className="d-flex flex-row justify-content-between">
             {programs.map(({id, titleEN, titleUA, icon}) => {
                 return(
