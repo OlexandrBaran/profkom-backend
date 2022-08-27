@@ -1,25 +1,22 @@
 import React from "react";
-import {BsCircleHalf} from 'react-icons/bs';
 import { Context } from '../../index';
 import { useContext } from 'react';
+import './ThemeSwitch.scss'
 
 const ThemeSwitch = () => {
 
     const {appTheme} = useContext(Context);
     
     const changeAppTheme = () => {
-        if (appTheme.mainColor === process.env.REACT_APP_LIGHT_THEME_MAIN_COLOR){
-            appTheme.setMainColor(process.env.REACT_APP_DARK_THEME_MAIN_COLOR);
-            appTheme.setSecondaryColor(process.env.REACT_APP_DARK_THEME_SECONDARY_COLOR);
-        }else{
-            appTheme.setMainColor(process.env.REACT_APP_LIGHT_THEME_MAIN_COLOR);
-            appTheme.setSecondaryColor(process.env.REACT_APP_LIGHT_THEME_SECONDARY_COLOR);
-        }
+        (appTheme.themeVariant.name === "light") ? appTheme.setThemeVariant('dark') : appTheme.setThemeVariant('light')
     }
 
     return(
-        <div onClick={changeAppTheme}>
-            <BsCircleHalf/> 
+        <div data-theme={appTheme.themeVariant.name}>
+            <label className="switch" onChange={changeAppTheme}>
+                <input type="checkbox"/>
+                <span className="slider"/>
+            </label>
         </div>
     );
 }

@@ -2,10 +2,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 3em;
+    height: 2.5em;
 
     .numbersContainer span{
         padding-left: 5px;
+
     }
 
     .form-check-input:focus {
@@ -15,6 +16,8 @@
     }
 
 }
+
+
 
 .specialButtons{
     display: flex;
@@ -27,3 +30,38 @@
     
 }
 
+.language-dropdown{
+    margin-right: 2em;
+    border:1px solid #384B5A;
+
+    &:focus{
+        outline: none !important;
+        box-shadow: none;
+    }
+
+    &:checked{
+        outline: none !important;
+        box-shadow: none;
+    }
+    
+    
+}
+
+@media screen and (max-width: 1023px){
+    .Topbar{
+        flex-direction: column;
+        height: auto;
+        justify-content:center;
+        align-items: center;
+
+        & .topbar-item{
+            margin-top: 1em;
+        }
+
+        
+        .specialButtons{
+            margin-bottom: 0.5em;
+            margin-left: 1.5em;
+        }
+    }
+}

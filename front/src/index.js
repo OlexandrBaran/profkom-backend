@@ -1,5 +1,6 @@
 import React, { createContext, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
+import './style.scss'
 import ThemeStore from './store/ThemeStore';
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
@@ -33,11 +34,12 @@ i18n
     fallbackLng: "en",
     detection:{
       order: [ 'cookie', 'htmlTag', 'localStorage', 'sessionStorage', 'path', 'subdomain'],
-      caches:['cookie'],
+      caches:['localStorage'],
     },
     backend:{
       loadPath: '/assets/locales/{{lng}}/translation.json',
     }
+
 
   });
 

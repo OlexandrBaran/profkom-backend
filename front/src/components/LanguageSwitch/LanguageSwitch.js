@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { GB, UA } from 'country-flag-icons/react/3x2';
 import i18next from 'i18next';
-import cookie from 'js-cookie'
 
 
 const languages = [
@@ -23,7 +22,6 @@ const languages = [
 
 const LanguageSwitch = () => {
 
-    const currenLanguageCode = cookie.get('i18next') || 'ua'
 
     const {appTheme} = useContext(Context)
 
@@ -40,25 +38,31 @@ const LanguageSwitch = () => {
 
     return(
         <Dropdown >
-            <Dropdown.Toggle className='dropdown'
-                variant="outline-success" 
+            <Dropdown.Toggle className='dropdown language-dropdown'
+                variant="outline-secondary" 
                 id="dropdown-basic" 
-                style={{
-                    backgroundColor:appTheme.mainColor, 
-                    color:appTheme.secondaryColor
-                    }}>
+                style={{color:appTheme.themeVariant.secondColor,
+                        backgroundColor:appTheme.themeVariant.mainColor
+                    }}
+            >
                 <BsGlobe/>
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
+            <Dropdown.Menu 
+             style={{color:appTheme.themeVariant.secondColor,
+                backgroundColor:appTheme.themeVariant.mainColor
+            }}
+            >
                 {languages.map(({code, name, country_code}) => {
                     return( 
                         <Dropdown.Item 
                             key={code}
+                            
                             onClick={() => {
                                 i18next.changeLanguage(code)
                             }}
-                            disabled={code === currenLanguageCode}
+                            style={{color:appTheme.themeVariant.navColor}}
+                            
                         >
                             {selectFlagIcon(country_code)}
                             {name}    

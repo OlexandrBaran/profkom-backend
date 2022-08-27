@@ -13,9 +13,9 @@ const App = observer(() => {
 
   return (
     <BrowserRouter>
-      <div className="App" style={{backgroundColor:appTheme.secondaryColor, color:appTheme.mainColor}}>
+      <div className="App" >
         <Topbar/>
-        <Navigation/>
+     
         <AppRouter/>
         <Footer/>
       </div>
