@@ -1,6 +1,6 @@
 import React, { createContext, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import './style.scss'
+import './style.css'
 import ThemeStore from './store/ThemeStore';
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";

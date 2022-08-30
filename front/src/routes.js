@@ -19,7 +19,7 @@ import Trustbox from './pages/Trustbox/TrustBox'
 import SuperAdminPanel from "./pages/SuperAdminPanel"
 import AdditionalPoints from './pages/AdditionalPoints/AdditionalPoints'
 import Poll from './pages/Poll/Poll'
-import { ABOUT_ROUTE, ADDITIONAL_POINTS_ROUTE, ADMIN_ROUTE, ANNOUNSMENT_ROUTE, CHUMMERY_ROUTE, CONTACTS_ROUTE, DOCUMENTS_ROUTE, HAVE_IDEA_ROUTE, HOME_ROUTE, LOGIN_ROUTE, NEWS_ROUTE, POLL_ROUTE, PROFKOM_STRUSTURE_ROUTE, PROFKOM_TEAM_ROUTE, PROGRAMS_ROUTE, QA_ROUTE, RATING_ROUTE, REGESTRATION_ROUTE, SUPERADMIN_ROUTE, TRUST_BOX_ROUTE } from "./utils/consts"
+import { ABOUT_ROUTE, ADDITIONAL_POINTS_ROUTE, ADMIN_ROUTE, ANNOUNSMENT_ROUTE, CHUMMERY_ROUTE, CONTACTS_ROUTE, DOCUMENTS_ROUTE, HAVE_IDEA_ROUTE, HOME_ROUTE, LOGIN_ROUTE, NEWS_ROUTE, POLL_ROUTE, PROFKOM_STRUCTURE_ROUTE, PROFKOM_TEAM_ROUTE, PROGRAMS_ROUTE, QA_ROUTE, RATING_ROUTE, REGESTRATION_ROUTE, SUPERADMIN_ROUTE, TRUST_BOX_ROUTE } from "./utils/consts"
 import ProfkomTeamMember from "./pages/Profkom/ProfkomTeamMember"
 import AnnouncementItem from "./pages/Announcement/AnnouncementItem"
 import ChummeryItem from "./pages/Chummery/ChummeryItem"
@@ -65,7 +65,7 @@ export const publicRoutes = [
     },
 
     {
-        path:PROFKOM_STRUSTURE_ROUTE,
+        path:PROFKOM_STRUCTURE_ROUTE,
         Component: <ProfkomStructure/>
     },  
 

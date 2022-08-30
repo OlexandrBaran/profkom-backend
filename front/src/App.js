@@ -1,4 +1,4 @@
-import Topbar from "./components/Topbar/Topbar";
+import Topbar from "./components/Topbar";
 import { Context } from "./index";
 import { useContext } from 'react';
 import { observer } from "mobx-react-lite";
@@ -15,7 +15,7 @@ const App = observer(() => {
     <BrowserRouter>
       <div className="App" >
         <Topbar/>
-     
+        <Navigation/>
         <AppRouter/>
         <Footer/>
       </div>
