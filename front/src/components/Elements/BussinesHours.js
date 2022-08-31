@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import {bussinesHoursData} from '../../data/BussinesHoursData'
-import cookie from 'js-cookie'
 
 const BussinesHours = () => {
-    const currenLanguageCode = cookie.get('i18next') || 'ua'
+    const currenLanguageCode = localStorage.getItem('i18nextLng') || 'ua'
     const {t} = useTranslation()
     const bussinesHoursPost = bussinesHoursData.map(item => {
         return(
@@ -19,8 +18,8 @@ const BussinesHours = () => {
     })
 
     return(
-        <div className="col-md-3 col-sm-6">
-            <h4 className='text-center'>{t('footer_column_4_business_hours')}</h4>
+        <div className="col-md-6 col-sm-6 col-lg-6 col-xl-3 mt-3 ml-3 pt-4">
+            <h4 className='text-center mb-3'>{t('footer_column_4_business_hours')}</h4>
             {bussinesHoursPost}
         </div>
     )

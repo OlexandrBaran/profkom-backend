@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const SocialMediaCircle = styled.span`
     border: 2px solid #394E61;
     margin: 5px;
-    padding: 5px;
+    padding: 4px 6px;
     border-radius: 50%;
 `
 
