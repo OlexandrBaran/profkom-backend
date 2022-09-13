@@ -5,22 +5,19 @@ import ProfkomTeamLeader from "../pages/Profkom/ProfkomTeamMembers/ProfkomTeamLe
 export const profkomTeamItems = [
     {
         id:1,
-        titleUA:'Керівник',
-        titleEN:'Leader',
+        title:'team_head',
         content: <ProfkomTeamLeader/>
     },
 
     {
         id:2,
-        titleUA:'Заступники та радники',
-        titleEN:'Deputies and advisers',
+        title:'team_secretaty',
         content:<ProfkomTeamAdviders/>
     },
 
     {
         id:3,
-        titleUA:'Члени команди',
-        titleEN:'Team members',
+        title:'team_members',
         content:<ProfkomMembers/>
     }
 ]

@@ -5,22 +5,19 @@ import TradeUnionDocs from "../pages/Documents/TradeUnionDocs";
 export const documentsData = [
     {
         id:1,
-        titleUA:'НОРМАТИВНІ ДОКУМЕНТИ',
-        titleEN:'REGULATIONS',
+        title:'edit_teamMembers',
         content:<RegulationDocs/>
     },
 
     {
         id:2,
-        titleUA:'ПРОФСПІЛКОВІ ДОКУМЕНТИ',
-        titleEN:'TRADE UNION DOCUMENTS',
+        title:'edit_teamMembers',
         content:<TradeUnionDocs/>
     },
 
     {
         id:3,
-        titleUA:'ЗРАЗКИ ЗАЯВ',
-        titleEN:'SAMPLES OF STATEMENTS',
+        title:'edit_teamMembers',
         content:<SamplesStatemans/>
     }
 ]
@@ -28,21 +25,18 @@ export const documentsData = [
 export const regulationsDocs = [
     {
         id:1,
-        titleUA:"fdfd",
-        titleEN:"deererferfsdsd",
+        title:'edit_teamMembers',
         link:"https://pon.org.ua/statut/"
     },
     {
         id:2,
-        titleUA:"fdfdderefd",
-        titleEN:"deererferfsdsd",
+        title:'edit_teamMembers',
         link:"https://pon.org.ua/statut/"
     },
 
     {
         id:3,
-        titleUA:"Статут",
-        titleEN:"deererferfsdsd",
+        title:'edit_teamMembers',
         link:"https://pon.org.ua/statut/"
     }
 ]
@@ -50,21 +44,17 @@ export const regulationsDocs = [
 export const tradeUnionDocs = [
     {
         id:1,
-        titleUA:"fdfd",
-        titleEN:"deererferfsdsd",
+        title:'edit_teamMembers',
         link:"https://pon.org.ua/statut/"
     },
     {
         id:2,
-        titleUA:"fdfdderefd",
-        titleEN:"deererferfsdsd",
+        title:'edit_teamMembers',
         link:"https://pon.org.ua/statut/"
     },
 
     {
-        id:3,
-        titleUA:"Статут",
-        titleEN:"deererferfsdsd",
+        title:'edit_teamMembers',
         link:"https://pon.org.ua/statut/"
     }
 ]
@@ -72,21 +62,35 @@ export const tradeUnionDocs = [
 export const samplesStatemans = [
     {
         id:1,
-        titleUA:"fdfd",
-        titleEN:"deererferfsdsd",
+        title:'edit_teamMembers',
         link:"https://pon.org.ua/statut/"
     },
     {
         id:2,
-        titleUA:"fdfdderefd",
-        titleEN:"deererferfsdsd",
+        title:'edit_teamMembers',
         link:"https://pon.org.ua/statut/"
     },
 
     {
         id:3,
-        titleUA:"Статут",
-        titleEN:"deererferfsdsd",
+        title:'edit_teamMembers',
+        link:"https://pon.org.ua/statut/"
+    },
+
+    {
+        id:4,
+        title:'edit_teamMembers',
+        link:"https://pon.org.ua/statut/"
+    },
+    {
+        id:5,
+        title:'edit_teamMembers',
+        link:"https://pon.org.ua/statut/"
+    },
+
+    {
+        id:6,
+        title:'edit_teamMembers',
         link:"https://pon.org.ua/statut/"
     }
 ]

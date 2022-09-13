@@ -1,16 +1,14 @@
 export const polls = [
     {
         id:1,
-        titleUA:"Ужгородський національний університет1",
-        titleEN:"Uzhhorod national sdsd",
+        title:'edit_teamMembers',
         status:"active",
         department:"uviver"
     },
     
     {
         id:2,
-        titleUA:"Ужгородський національний університет2",
-        titleEN:"Uzhhorod national dfds",
+        title:'edit_teamMembers',
         status:"disactive",
         department:"bio"
     },
@@ -18,8 +16,7 @@ export const polls = [
 
     {
         id:3,
-        titleUA:"Ужгородський національний університет3",
-        titleEN:"Uzhhorod national dfdfd",
+        title:'edit_teamMembers',
         status:"active",
         department:"uviver"
     },
@@ -27,17 +24,14 @@ export const polls = [
 
     {
         id:4,
-        titleUA:"Ужгородський національний університет4",
-        titleEN:"Uzhhorod national fdfdf",
+        title:'edit_teamMembers',
         status:"disactive",
         department:"fdfd"
     },
 
 
     {
-        id:5,
-        titleUA:"Ужгородський національний університет5",
-        titleEN:"Uzhhorod national dfdfd",
+        title:'edit_teamMembers',
         status:"active",
         department:"uviver"
     },
@@ -45,8 +39,7 @@ export const polls = [
 
     {
         id:6,
-        titleUA:"Ужгородський національний університет6",
-        titleEN:"Uzhhorod national dfdfuniversity",
+        title:'edit_teamMembers',
         status:"active",
         department:"ier"
     },
@@ -54,8 +47,7 @@ export const polls = [
 
     {
         id:7,
-        titleUA:"Ужгородський національний університет7",
-        titleEN:"Uzhhorod national univdfdfersity",
+        title:'edit_teamMembers',
         status:"active",
         department:"uviver"
     },
@@ -63,46 +55,9 @@ export const polls = [
 
     {
         id:8,
-        titleUA:"Ужгородський національний університет8",
-        titleEN:"Uzhhorod national universitvfddfy",
+        title:'edit_teamMembers',
         status:"disactive",
         department:"math"
-    },
-
-
-    {
-        id:9,
-        titleUA:"Ужгородський національний університет9",
-        titleEN:"Uzhhorod national university787",
-        status:"active",
-        department:"uviver"
-    },
-
-
-    {
-        id:10,
-        titleUA:"Ужгородський національний університет10",
-        titleEN:"Uzhhorod national university78",
-        status:"active",
-        department:"law"
-    },
-
-
-    {
-        id:11,
-        titleUA:"Ужгородський національний університет11",
-        titleEN:"Uzhhorod national university54",
-        status:"disactive",
-        department:"uviver"
-    },
-
-
-    {
-        id:12,
-        titleUA:"Ужгородський національний університет12",
-        titleEN:"Uzhhorod national university45",
-        status:"active",
-        department:"uviver"
     }
 
 ];

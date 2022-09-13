@@ -18,7 +18,7 @@ const BussinesHours = () => {
     })
 
     return(
-        <div className="col-md-6 col-sm-6 col-lg-6 col-xl-3 mt-3 ml-3 pt-4">
+        <div className="col-md-6 col-sm-6 col-lg-6 col-xl-3 mt-3 ml-3">
             <h4 className='text-center mb-3'>{t('footer_column_4_business_hours')}</h4>
             {bussinesHoursPost}
         </div>

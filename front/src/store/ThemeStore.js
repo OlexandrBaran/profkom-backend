@@ -10,7 +10,9 @@ export default class ThemeStore {
             mainColor:"#F4F5FB",
             secondColor:"#384B5A",
             thirdColor:"#E9EBF7",
-            navColor:"#273744"
+            navColor:"#273744",
+            sideBarColor:"#394E61",
+            textColor:"#384B5A"
         }
 
         this.darkTheme = {
@@ -18,7 +20,9 @@ export default class ThemeStore {
             mainColor:"#273744",
             secondColor:"#F4F5FB",
             thirdColor:"#394E61",
-            navColor:"#394E61"
+            navColor:"#394E61",
+            sideBarColor:"#384B5A",
+            textColor:"#B7B7B7"
         }
 
         if(localStorage.getItem("theme") === 'light')

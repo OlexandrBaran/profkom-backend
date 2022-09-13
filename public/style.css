@@ -18,3 +18,12 @@ body {
     margin-right: 2em;
     border:1px solid #384B5A;
 }    
+
+.language-dropdown:focus{
+    outline: none !important;
+    box-shadow: none;
+}
+
+.LinearCard-container{
+    margin:3rem 0;
+}

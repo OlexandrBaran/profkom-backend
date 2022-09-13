@@ -32,7 +32,7 @@ i18n
     supportedLngs:['en', 'ua'],
     fallbackLng: "en",
     detection:{
-      order: [ 'cookie', 'htmlTag', 'localStorage', 'sessionStorage', 'path', 'subdomain'],
+      order: [ 'localStorage'],
       caches:['localStorage'],
     },
     backend:{
