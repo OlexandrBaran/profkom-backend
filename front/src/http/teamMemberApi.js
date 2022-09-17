@@ -9,6 +9,6 @@ export const createTeamMember = async (team_member) => {
 
 
 export const fetchTeamMember = async () => {
-    const {data} = await $host.get('api/team')
+    const {data} = await $host.get('team')
     return data
 }
