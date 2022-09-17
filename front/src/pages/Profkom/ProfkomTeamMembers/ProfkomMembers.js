@@ -11,7 +11,7 @@ const ProfkomMembers = observer(() => {
     useEffect(() => {
         fetchTeamMember().then(data => teamMember.setTeamMembers(data.rows));
         console.log(teamMember.teamMembers);
-    }, [teamMember])
+    }, [])
 
     const filterTeamMembers = (item) => {
         return item.positionUA.includes('профбюро')
