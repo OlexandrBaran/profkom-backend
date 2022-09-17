@@ -11,9 +11,10 @@ const ProfkomMembers = observer(() => {
     useEffect(() => {
         fetchTeamMember().then(data => teamMember.setTeamMembers(data.rows));
         console.log(teamMember.teamMembers);
+        // eslint-disable-next-line
     }, [])
 
-    const filterTeamMembers = (item) => {
+    const filterTeamMembers = (item) => { 
         return item.positionUA.includes('профбюро')
      
     }
