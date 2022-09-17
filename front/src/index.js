@@ -69,6 +69,6 @@ root.render(
     }}
     > 
       <App />
-    </Context.Provider>
+    </Context.Provider> 
   </Suspense></div>
 );
