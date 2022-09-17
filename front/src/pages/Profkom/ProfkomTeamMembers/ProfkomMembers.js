@@ -9,7 +9,7 @@ const ProfkomMembers = observer(() => {
     const {teamMember} = useContext(Context);
     
     useEffect(() => {
-        fetchTeamMember().then(data => console.log(data));
+        fetchTeamMember().then(data => console.log(data.rows));
         
         
     }, [])
