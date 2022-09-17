@@ -5,7 +5,7 @@ import { fetchTeamMember } from "../../../http/teamMemberApi";
 import ProfkomTeamItem from "./ProfkomTeamItem"
 
 
-const ProfkomMembers = observer(() => {
+const ProfkomMembers = observer(({type}) => {
     const {teamMember} = useContext(Context);
     
     useEffect(() => {
@@ -13,19 +13,38 @@ const ProfkomMembers = observer(() => {
         // eslint-disable-next-line
     }, [])
 
-    const filterTeamMembers = (item) => { 
-        return item.positionUA.includes('профбюро')
-     
-    }
-    const membersList = teamMember.teamMembers.filter(filterTeamMembers);
+    const filterLeader = (item) => { return item.positionUA.includes('первинної') }
 
+    const filterAdvisers = (item) => {
+        if(item.positionUA.includes('Секретар') || item.positionUA.includes('Заступник') || item.positionUA.includes('Радник')) 
+             return true;
+         else 
+             return false;
+    }
+
+    const filterTeamMembers = (item) => { return item.positionUA.includes('профбюро') }
+    
+    let membersList = []
+
+    switch (type) {
+        case "team_head":
+            membersList = teamMember.teamMembers.filter(filterLeader);
+            break;
+        case "team_secretaty":
+            membersList = teamMember.teamMembers.filter(filterAdvisers);
+            break;
+        case "team_members":
+            membersList = teamMember.teamMembers.filter(filterTeamMembers);
+            break;
+        default:
+            break;
+    }
 
     return (
         <div className="d-flex m-3">
             {membersList.map((item) => {
-
-                return(<ProfkomTeamItem key={item.id} teamMemberItemData={item}/>)
-                })   
+                return(<ProfkomTeamItem key={item.id} data={item}/>)
+              })   
             }
         </div>
     )
