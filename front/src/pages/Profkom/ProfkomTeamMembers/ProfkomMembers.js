@@ -9,9 +9,9 @@ const ProfkomMembers = observer(() => {
     const {teamMember} = useContext(Context);
     
     useEffect(() => {
-        fetchTeamMember().then(data => teamMember.setTeamMembers(data.rows));
-        console.log(teamMember.teamMembers);
-        // eslint-disable-next-line
+        fetchTeamMember().then(data => console.log(data));
+        
+        
     }, [])
 
     const filterTeamMembers = (item) => { 

@@ -47,7 +47,7 @@ const SideBar = ({sidebarItems, changeContent}) => {
     const [selectedItemID, setSelectedItemId] = useState(1)
     
     const currenLanguageCode = localStorage.getItem('i18nextLng') || 'ua'
-    console.log(currenLanguageCode);
+    
     return(
         <SidebarContent >
                 {sidebarItems.map(({id, title, content}) => {
