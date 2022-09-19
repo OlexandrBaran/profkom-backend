@@ -10,7 +10,7 @@ const ProfkomTeamItem = ({data}) => {
 
     return(
         <Card style={{ width: '18rem' }} className="m-3" onClick={() => navigate(PROFKOM_TEAM_ROUTE + '/' + data.id)}>
-        <Card.Img variant="top" src={process.env.REACT_APP_API_URL + "/" + data.image} />
+        <Card.Img variant="top" src={process.env.REACT_APP_API_URL + data.image} />
         <Card.Body>
           <Card.Title>{data.firstNameEN} {data.lastNameEN}</Card.Title>
           <Card.Text>

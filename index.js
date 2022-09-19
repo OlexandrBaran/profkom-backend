@@ -7,8 +7,9 @@ const router = require('./routes/index');
 const errorHandler = require('./middleware/errorHandlingMiddleware');
 const fileUpload = require('express-fileupload');
 const path = require('path')
+const multer = require("multer");
+const upload = multer({ dest: 'uploads/'})
 
- 
  
 const PORT = process.env.PORT || 5000;
 
