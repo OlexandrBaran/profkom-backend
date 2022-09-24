@@ -24,7 +24,6 @@ class TeamMemberController {
                 telegram
             } = req.body;
             const {image} = req.files;
-            console.log(`resasdad ${firstNameUA}`);
             let fileName = uuid.v4() + ".jpg";
             image.mv(path.resolve(__dirname, '..', 'static', fileName))
            
