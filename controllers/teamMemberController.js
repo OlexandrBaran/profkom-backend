@@ -27,7 +27,7 @@ class TeamMemberController {
             console.log(`resasdad ${firstNameUA}`);
             let fileName = uuid.v4() + ".jpg";
             image.mv(path.resolve(__dirname, '..', 'static', fileName))
-            uploadFile(image, fileName)
+           
 
             const teamMember = TeamMember.create({
                 firstNameUA,
