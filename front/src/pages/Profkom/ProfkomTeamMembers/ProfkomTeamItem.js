@@ -1,33 +1,62 @@
-import React from 'react';
-import { Card, ListGroup } from 'react-bootstrap';
+import React, { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { PROFKOM_TEAM_ROUTE } from '../../../utils/consts';
+import styled from 'styled-components';
+import { observer } from 'mobx-react-lite';
+import { Context } from '../../..';
 
+const Card = styled.div`
+  border: 1px solid grey;
+  border-radius: 20px;
+  width: 18rem;
+  height: auto;
+  position:relative;
 
-const ProfkomTeamItem = ({data}) => {
+  &:hover{
 
+    .body{
+      display:block;
+    }
+  }
+`
+const CardImage = styled.img`
+  width:100%;
+  height:auto;
+  border-radius: 20px;
+  
+`
+const CardBody = styled.div`
+  position:absolute;
+  color:white;
+  bottom:0;
+  display:none;
+  background-color:red;
+  border-bottom-left-radius:20px;
+  border-bottom-right-radius:20px;
+`
+
+const CardName = styled.div`
+text-align:center;
+text-transform:uppercase;
+`
+const CardPosition = styled.div`
+text-align:center;
+`
+const ProfkomTeamItem = observer(({data}) => {
+  const {appTheme} = useContext(Context)
   const navigate = useNavigate(); 
 
     return(
-        <Card style={{ width: '18rem' }} className="m-3" onClick={() => navigate(PROFKOM_TEAM_ROUTE + '/' + data.id)}>
-        <Card.Img variant="top" src={process.env.REACT_APP_API_URL + data.image} />
-        <Card.Body>
-          <Card.Title>{data.firstNameEN} {data.lastNameEN}</Card.Title>
-          <Card.Text>
-          {data.positionUA}
-          </Card.Text>
-        </Card.Body>
-        <ListGroup className="list-group-flush">
-          <ListGroup.Item>{data.email}</ListGroup.Item>
-          <ListGroup.Item>{data.phoneNumber}</ListGroup.Item>
-        </ListGroup>
-        <Card.Body>
-          <Card.Link href={data.telegram}>Telegram</Card.Link>
-          <Card.Link href={data.instagram}>Instagram</Card.Link>
-          <Card.Link href={data.facebook}>Facebook</Card.Link>
-        </Card.Body>
+        <Card className="m-3" onClick={() => navigate(PROFKOM_TEAM_ROUTE + '/' + data.id)}>
+        <CardImage variant="top" src={data.image} />
+        <CardBody className='body' style={{backgroundColor:appTheme.themeVariant.navColor}}>
+          <CardName>{data.firstNameEN} {data.lastNameEN}</CardName>
+          <CardPosition>
+          {data.positionEN}
+          </CardPosition>
+        </CardBody>
       </Card>
     )
-}
+})
 
 export default ProfkomTeamItem
