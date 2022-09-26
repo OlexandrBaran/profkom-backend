@@ -2,7 +2,7 @@ const {TeamMember} = require('../models/models')
 //const ApiError = require('../error/ApiError');
 const uuid = require('uuid');
 const path = require('path')
-const {uploadFile, getFileStream} = require('../s3')
+
 
 class TeamMemberController {
     async create(req, res) {
@@ -25,7 +25,7 @@ class TeamMemberController {
             } = req.body;
             const {image} = req.files;
             let fileName = uuid.v4() + ".jpg";
-            image.mv(path.resolve(__dirname, '..', 'static', fileName))
+            
            
 
             const teamMember = TeamMember.create({
@@ -46,7 +46,7 @@ class TeamMemberController {
                 telegram
             });
 
-                res.json(teamMember); 
+            res.json(teamMember); 
 
             } catch (error) {
                //     next(ApiError.badRequest(error.message))

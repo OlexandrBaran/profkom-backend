@@ -2,7 +2,6 @@ import {$authHost, $host} from "./index";
 
 
 export const createTeamMember = async (team_member) => {
-    console.log(team_member.get("email") );
     const {data} = await $authHost.post('team', team_member)
     return data
 }
