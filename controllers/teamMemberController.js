@@ -50,7 +50,7 @@ class TeamMemberController {
             res.json(teamMember); 
             await uploadFile(image, fileName)
             } catch (error) {
-               //     next(ApiError.badRequest(error.message))
+               //next(ApiError.badRequest(error.message))
             }
         
     }
