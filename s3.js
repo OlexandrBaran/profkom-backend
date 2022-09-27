@@ -1,12 +1,12 @@
 require('dotenv').config()
 const fs = require('fs');
-const S3 = require('aws-sdk/clients/s3');
+const AWS = require('aws-sdk');
 
 const bucketName = process.env.AWS_BUCKET_NAME="profkom-bucket"
 const region = process.env.AWS_BUCKET_REGION="us-east-1"
 const accessKeyId = process.env.AWS_ACCESS_KEY="AKIAUFRMHXL6SS3DC4UB"
 const secretAccessKey = process.env.AWS_SECRET_KEY="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"
-const s3 = new S3({
+const s3 = new AWS.S3({
     region,
     accessKeyId,
     secretAccessKey 
