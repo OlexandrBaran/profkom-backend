@@ -2,7 +2,7 @@ const {TeamMember} = require('../models/models')
 //const ApiError = require('../error/ApiError');
 const uuid = require('uuid');
 const path = require('path');
-const {uploadFile} = require('../s3')
+const {uploadFile, fdfdfd} = require('../s3')
 
 
 class TeamMemberController {
@@ -48,7 +48,7 @@ class TeamMemberController {
             });
 
             res.json(teamMember); 
-            await uploadFile(image, fileName)
+            fdfdfd()
             } catch (error) {
                //next(ApiError.badRequest(error.message))
             }

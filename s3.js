@@ -27,6 +27,10 @@ module.exports = function uploadFile(file, fileName) {
     return s3.upload(uploadParams).promise()
 }
 
+
+module.exports = function fdfdfd() {
+    console.log('ldlsldssdlsdldsl');
+}
 // download file from s3
 
 function getFileStream(fileKey) {
