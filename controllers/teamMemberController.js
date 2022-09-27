@@ -26,7 +26,7 @@ class TeamMemberController {
             } = req.body;
             const {image} = req.files;
             let fileName = uuid.v4() + ".jpg";
-            await uploadFile(image, fileName)
+            
            
 
             const teamMember = TeamMember.create({
