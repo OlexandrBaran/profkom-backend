@@ -7,6 +7,8 @@ const {uploadFile, fdfdfd} = require('../s3')
 
 class TeamMemberController {
     async create(req, res) {
+        console.log('req');
+        console.log(req);
         try {
             const {  
                 firstNameUA,
@@ -26,8 +28,7 @@ class TeamMemberController {
             } = req.body;
             const {image} = req.files;
             let fileName = uuid.v4() + ".jpg";
-            console.log('ddededede');
-            console.log(image);
+
            
 
             const teamMember = TeamMember.create({
