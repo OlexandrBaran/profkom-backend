@@ -13,7 +13,7 @@ function ggg() {
     
 }
 function eee() {
-    console.log('uploadFile');
+    alert('uploadFile');
     
 }
 eee()
