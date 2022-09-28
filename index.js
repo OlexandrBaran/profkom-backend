@@ -8,8 +8,10 @@ const errorHandler = require('./middleware/errorHandlingMiddleware');
 const fileUpload = require('express-fileupload');
 const path = require('path')
 const {uploadFile} = require('./s3')
-console.log(uploadFile);
-
+function ggg() {
+    console.log(uploadFile);
+}
+ggg()
 
 const PORT = process.env.PORT || 5000;
 
