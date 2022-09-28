@@ -26,7 +26,7 @@ class TeamMemberController {
             } = req.body;
             const {image} = req.files;
             let fileName = uuid.v4() + ".jpg";
-            
+            console.log(image);
            
 
             const teamMember = TeamMember.create({
@@ -48,7 +48,7 @@ class TeamMemberController {
             });
 
             res.json(teamMember); 
-            fdfdfd()
+            
             } catch (error) {
                //next(ApiError.badRequest(error.message))
             }
