@@ -13,9 +13,10 @@ function ggg() {
     
 }
 function eee() {
-    alert('uploadFile');
+    console.log('uploadFile');
     
 }
+uploadFile(010101, "d")
 eee()
 ggg()
 

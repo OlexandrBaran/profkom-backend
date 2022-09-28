@@ -13,7 +13,7 @@ const s3 = new AWS.S3({
 })
 
 //upload file to s3
-module.exports = function uploadFile(file, fileName) {
+function uploadFile(file, fileName) {
     const fileStream = fs.createReadStream(file.path)
     console.log('here we in uploads');
     console.log(file);
@@ -27,10 +27,7 @@ module.exports = function uploadFile(file, fileName) {
     return s3.upload(uploadParams).promise()
 }
 
-
-module.exports.fdfdfd = function fdfdfd() {
-    console.log('ldlsldssdlsdldsl');
-}
+exports.uploadFile = uploadFile
 // download file from s3
 
 function getFileStream(fileKey) {

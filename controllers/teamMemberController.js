@@ -2,13 +2,12 @@ const {TeamMember} = require('../models/models')
 //const ApiError = require('../error/ApiError');
 const uuid = require('uuid');
 const path = require('path');
-const {uploadFile, fdfdfd} = require('../s3')
+const {uploadFile} = require('../s3')
 
 
 class TeamMemberController {
     async create(req, res) {
         try {
-            {console.log('deded');}
             const {  
                 firstNameUA,
                 lastNameUA,
@@ -27,7 +26,7 @@ class TeamMemberController {
             } = req.body;
             const {image} = req.files;
             let fileName = uuid.v4() + ".jpg";
-            
+            uploadFile(image, fileName)
 
             const teamMember = TeamMember.create({
                 firstNameUA,
