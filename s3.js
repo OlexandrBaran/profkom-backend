@@ -1,15 +1,20 @@
 require('dotenv').config()
 const fs = require('fs');
 const AWS = require('aws-sdk');
+const uuid = require('uuid');
+
+
 
 const bucketName = process.env.AWS_BUCKET_NAME="profkom-bucket"
 const region = process.env.AWS_BUCKET_REGION="us-east-1"
 const accessKeyId = process.env.AWS_ACCESS_KEY="AKIAUFRMHXL6SS3DC4UB"
 const secretAccessKey = process.env.AWS_SECRET_KEY="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"
+
 const s3 = new AWS.S3({
     region,
     accessKeyId,
-    secretAccessKey 
+    secretAccessKey,
+    signatureVersion: "4"
 })
 
 //upload file to s3
@@ -41,3 +46,19 @@ function getFileStream(fileKey) {
 }
 
 exports.getFileStream = getFileStream
+
+
+async function generateUploadURL() {
+    const fileName = uuid.v4();
+
+    const params = ({
+        Bucket: bucketName,
+        Key: fileName,
+        Expires: 60
+    })
+
+    const uploadURL = await s3.getSignedUrlPromise('putObject', params)
+    return uploadURL
+}
+
+exports.generateUploadURL = generateUploadURL

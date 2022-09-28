@@ -7,6 +7,7 @@ const router = require('./routes/index');
 const errorHandler = require('./middleware/errorHandlingMiddleware');
 const fileUpload = require('express-fileupload');
 const path = require('path')
+const {generateUploadURL} = require('./s3')
 
 
 const PORT = process.env.PORT || 5000;
@@ -18,6 +19,11 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'public')))
 app.use(fileUpload({}));
 app.use('/', router);
+
+app.get('s3Url', (req, res) => {
+    const url = generateUploadURL()
+    res.send({url})
+})
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, 'static')))
