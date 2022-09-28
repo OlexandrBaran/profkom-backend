@@ -7,18 +7,7 @@ const router = require('./routes/index');
 const errorHandler = require('./middleware/errorHandlingMiddleware');
 const fileUpload = require('express-fileupload');
 const path = require('path')
-const {uploadFile} = require('./s3')
-function ggg() {
-    console.log(uploadFile);
-    
-}
-function eee() {
-    console.log('uploadFile');
-    
-}
-uploadFile(010101, "d")
-eee()
-ggg()
+
 
 const PORT = process.env.PORT || 5000;
 
