@@ -26,6 +26,7 @@ class TeamMemberController {
             } = req.body;
             const {image} = req.files;
             let fileName = uuid.v4() + ".jpg";
+            console.log('ddededede');
             console.log(image);
            
 
