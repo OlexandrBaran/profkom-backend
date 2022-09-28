@@ -10,7 +10,13 @@ const path = require('path')
 const {uploadFile} = require('./s3')
 function ggg() {
     console.log(uploadFile);
+    
 }
+function eee() {
+    console.log('uploadFile');
+    
+}
+eee()
 ggg()
 
 const PORT = process.env.PORT || 5000;
