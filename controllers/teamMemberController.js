@@ -29,7 +29,7 @@ class TeamMemberController {
 
            const dklkslkdsl = () => {
                 console.log('rerere');
-           }
+           };dklkslkdsl()
 
             const teamMember = TeamMember.create({
                 firstNameUA,
