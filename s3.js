@@ -28,7 +28,7 @@ module.exports = function uploadFile(file, fileName) {
 }
 
 
-module.exports = function fdfdfd() {
+module.exports.fdfdfd = function fdfdfd() {
     console.log('ldlsldssdlsdldsl');
 }
 // download file from s3
