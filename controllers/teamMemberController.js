@@ -27,9 +27,6 @@ class TeamMemberController {
             const {image} = req.files;
             let fileName = uuid.v4() + ".jpg";
 
-           const dklkslkdsl = () => {
-                console.log('rerere');
-           };dklkslkdsl()
 
             const teamMember = TeamMember.create({
                 firstNameUA,
@@ -41,7 +38,7 @@ class TeamMemberController {
                 descriptionEN,
                 descriptionUA,
                 department,
-                image:fileName,
+                image,
                 positionUA,
                 positionEN,
                 instagram,
