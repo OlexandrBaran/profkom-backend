@@ -20,8 +20,8 @@ app.use(express.static(path.resolve(__dirname, 'public')))
 app.use(fileUpload({}));
 app.use('/', router);
 
-app.get('s3Url', (req, res) => {
-    const url = generateUploadURL()
+app.get('/s3Url', async (req, res) => {
+    const url = await generateUploadURL()
     res.send({url})
 })
 

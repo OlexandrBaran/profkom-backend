@@ -14,7 +14,7 @@ const s3 = new AWS.S3({
     region,
     accessKeyId,
     secretAccessKey,
-    signatureVersion: "4"
+    signatureVersion: "v4"
 })
 
 //upload file to s3
