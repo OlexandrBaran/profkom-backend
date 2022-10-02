@@ -18,14 +18,13 @@ class TeamMemberController {
                 descriptionEN,
                 descriptionUA,
                 department,
+                image,
                 positionUA,
                 positionEN,
                 instagram,
                 facebook,
                 telegram
             } = req.body;
-            const {image} = req.files;
-            let fileName = uuid.v4() + ".jpg";
             
 
             const teamMember = TeamMember.create({
@@ -38,7 +37,7 @@ class TeamMemberController {
                 descriptionEN,
                 descriptionUA,
                 department,
-                image:fileName,
+                image,
                 positionUA,
                 positionEN,
                 instagram,
