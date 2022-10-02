@@ -31,7 +31,7 @@ const ProfkomMembers = observer(({type}) => {
             membersList = teamMember.teamMembers.filter(filterLeader);
             break;
         case "team_secretaty":
-            membersList = teamMember.teamMembers.filter(filterAdvisers);
+            membersList = teamMember.teamMembers
             break;
         case "team_members":
             membersList = teamMember.teamMembers.filter(filterTeamMembers);
