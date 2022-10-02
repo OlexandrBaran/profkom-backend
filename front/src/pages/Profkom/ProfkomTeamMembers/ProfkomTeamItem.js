@@ -4,7 +4,7 @@ import { PROFKOM_TEAM_ROUTE } from '../../../utils/consts';
 import styled from 'styled-components';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../../..';
-
+/*<CardImage variant="top" src={`https://profkom-bucket.s3.amazonaws.com/${data.image}`} />*/ 
 const Card = styled.div`
   border: 1px solid grey;
   border-radius: 20px;
@@ -12,16 +12,20 @@ const Card = styled.div`
   height: auto;
   position:relative;
 
-  &:hover{
 
+  &:hover{
+    transform:scale(1.1);
+    transition: transform .5s ease-in-out;
+    
     .body{
-      display:block;
+      visibility: visible;
+      opacity: 1;
     }
   }
 `
 const CardImage = styled.img`
   width:100%;
-  height:auto;
+  height:22rem;
   border-radius: 20px;
   
 `
@@ -29,7 +33,9 @@ const CardBody = styled.div`
   position:absolute;
   color:white;
   bottom:0;
-  display:none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
   background-color:red;
   border-bottom-left-radius:20px;
   border-bottom-right-radius:20px;

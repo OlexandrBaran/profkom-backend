@@ -5,7 +5,8 @@ import { Context } from "../..";
 import { observer } from "mobx-react-lite";
 const Container = styled.div`
    display:flex;
-
+   width:100%;
+    
    @media (max-width: 1180px) {
 
     flex-direction:column;

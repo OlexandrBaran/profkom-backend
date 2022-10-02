@@ -3,6 +3,16 @@ import { useContext, useEffect } from "react"
 import { Context } from "../../.."
 import { fetchTeamMember } from "../../../http/teamMemberApi";
 import ProfkomTeamItem from "./ProfkomTeamItem"
+import styled from "styled-components";
+
+const CardsContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    justify-items:center;
+    justify-content:center;
+
+`
 
 
 const ProfkomMembers = observer(({type}) => {
@@ -41,12 +51,12 @@ const ProfkomMembers = observer(({type}) => {
     }
 
     return (
-        <div className="d-flex m-3">
+        <CardsContainer className="d-flex m-3">
             {membersList.map((item) => {
                 return(<ProfkomTeamItem key={item.id} data={item}/>)
               })   
             }
-        </div>
+        </CardsContainer>
     )
 })
 
