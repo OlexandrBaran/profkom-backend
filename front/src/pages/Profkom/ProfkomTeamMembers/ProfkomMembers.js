@@ -14,7 +14,6 @@ const CardsContainer = styled.div`
 
 `
 
-
 const ProfkomMembers = observer(({type}) => {
     const {teamMember} = useContext(Context);
     
@@ -41,7 +40,7 @@ const ProfkomMembers = observer(({type}) => {
             membersList = teamMember.teamMembers.filter(filterLeader);
             break;
         case "team_secretaty":
-            membersList = teamMember.teamMembers
+            membersList = teamMember.teamMembers.filter(filterAdvisers)
             break;
         case "team_members":
             membersList = teamMember.teamMembers.filter(filterTeamMembers);

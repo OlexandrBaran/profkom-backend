@@ -4,7 +4,7 @@ import { PROFKOM_TEAM_ROUTE } from '../../../utils/consts';
 import styled from 'styled-components';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../../..';
-/*<CardImage variant="top" src={`https://profkom-bucket.s3.amazonaws.com/${data.image}`} />*/ 
+
 const Card = styled.div`
   border: 1px solid grey;
   border-radius: 20px;
@@ -12,24 +12,32 @@ const Card = styled.div`
   height: auto;
   position:relative;
 
+  @media(min-width:1200px){
+    &:hover{
+      transform:scale(1.1);
+      transition: transform .5s ease-in-out;
+      
+      .body{
+        visibility: visible;
+        opacity: 1;
+      }
+    }     
+  }
 
-  &:hover{
-    transform:scale(1.1);
-    transition: transform .5s ease-in-out;
-    
-    .body{
-      visibility: visible;
-      opacity: 1;
-    }
+  @media(max-width:1200px){  
+      .body{
+        visibility: visible;
+        opacity: 1;
+      }
   }
 `
 const CardImage = styled.img`
   width:100%;
   height:22rem;
   border-radius: 20px;
-  
 `
 const CardBody = styled.div`
+  width:100%;
   position:absolute;
   color:white;
   bottom:0;
@@ -42,12 +50,14 @@ const CardBody = styled.div`
 `
 
 const CardName = styled.div`
-text-align:center;
-text-transform:uppercase;
+  text-align:center;
+  text-transform:uppercase;
 `
 const CardPosition = styled.div`
-text-align:center;
+  text-align:center;
 `
+
+
 const ProfkomTeamItem = observer(({data}) => {
   const {appTheme} = useContext(Context)
   const navigate = useNavigate(); 
@@ -56,7 +66,6 @@ const ProfkomTeamItem = observer(({data}) => {
         <Card className="m-3" onClick={() => navigate(PROFKOM_TEAM_ROUTE + '/' + data.id)}>
         <CardImage variant="top" src={`${data.image}`} />
         <CardBody className='body' style={{backgroundColor:appTheme.themeVariant.navColor}}>
-          {console.log(data.image)}
           <CardName>{data.firstNameEN} {data.lastNameEN}</CardName>
           <CardPosition>
           {data.positionEN}
