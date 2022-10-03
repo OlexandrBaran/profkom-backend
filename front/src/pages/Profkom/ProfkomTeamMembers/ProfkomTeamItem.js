@@ -54,7 +54,7 @@ const ProfkomTeamItem = observer(({data}) => {
 
     return(
         <Card className="m-3" onClick={() => navigate(PROFKOM_TEAM_ROUTE + '/' + data.id)}>
-        <CardImage variant="top" src={`https://profkom-bucket.s3.amazonaws.com/${data.image}`} />
+        <CardImage variant="top" src={`${data.image}`} />
         <CardBody className='body' style={{backgroundColor:appTheme.themeVariant.navColor}}>
           {console.log(data.image)}
           <CardName>{data.firstNameEN} {data.lastNameEN}</CardName>
