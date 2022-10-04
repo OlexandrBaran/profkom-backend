@@ -36,17 +36,11 @@ const SidebarContent = styled.div`
     }
 `
 
-const DropDownItem = styled.div`
-    font-size:1rem; 
-`
-
 
 const SideBar = ({sidebarItems, changeContent}) => {
 
     const {t} = useTranslation()
     const [selectedItemID, setSelectedItemId] = useState(1)
-    
-    const currenLanguageCode = localStorage.getItem('i18nextLng') || 'ua'
     
     return(
         <SidebarContent >

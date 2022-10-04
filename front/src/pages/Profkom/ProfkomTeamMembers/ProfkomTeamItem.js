@@ -61,15 +61,25 @@ const CardPosition = styled.div`
 const ProfkomTeamItem = observer(({data}) => {
   const {appTheme} = useContext(Context)
   const navigate = useNavigate(); 
+  const currenLanguageCode = localStorage.getItem('i18nextLng') || 'ua'
 
     return(
         <Card className="m-3" onClick={() => navigate(PROFKOM_TEAM_ROUTE + '/' + data.id)}>
         <CardImage variant="top" src={`${data.image}`} />
         <CardBody className='body' style={{backgroundColor:appTheme.themeVariant.navColor}}>
-          <CardName>{data.firstNameEN} {data.lastNameEN}</CardName>
-          <CardPosition>
-          {data.positionEN}
-          </CardPosition>
+          {
+            currenLanguageCode === 'ua' ? 
+              <CardName>{data.firstNameUA} {data.lastNameUA}</CardName>
+                : 
+              <CardName>{data.firstNameEN} {data.lastNameEN}</CardName>
+          }
+          
+          {
+            currenLanguageCode === 'ua' ? 
+            <CardPosition>{data.positionUA}</CardPosition>
+                : 
+            <CardPosition>{data.positionEN}</CardPosition>
+          }
         </CardBody>
       </Card>
     )
