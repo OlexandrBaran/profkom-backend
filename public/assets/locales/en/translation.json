@@ -126,5 +126,11 @@
     "about_line8":"Obtain awards from the administration for active university activity.",
     "about_line9":"Participate in trips to historical places of Ukraine.",
     "about_line10":"Provision of international student tickets - ISIC.",
-    "about_line11":"According to the Law of Ukraine 'On trade unions, their rights and guarantees of activity', trade unions are independent of state authorities, local self-government bodies, employers (university administration), other public organizations, political parties, they are not accountable to them and are not subject to their control. The students' trade union committee of UzhNU cooperates with the university administration on the principles of social partnership on all issues related to the conditions of study, living and living of students."
+    "about_line11":"According to the Law of Ukraine 'On trade unions, their rights and guarantees of activity', trade unions are independent of state authorities, local self-government bodies, employers (university administration), other public organizations, political parties, they are not accountable to them and are not subject to their control. The students' trade union committee of UzhNU cooperates with the university administration on the principles of social partnership on all issues related to the conditions of study, living and living of students.",
+    "empty_field_err":"This field is empty! Please enter the required data",
+    "minLength_err":"The value entered in the field is too short! Enter a longer value",
+    "maxLength_err":"The value entered in the field is too long! Enter a shorter value",
+    "email_err":"Incorrect email! Enter the correct data",
+    "isContainsNumber_err":"This field cannot contain numbers. Please enter correct data",
+    "isPhoneNumber_err":"Invalid phone number. Please enter correct number"
 }
