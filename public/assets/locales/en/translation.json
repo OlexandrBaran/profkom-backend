@@ -132,5 +132,6 @@
     "maxLength_err":"The value entered in the field is too long! Enter a shorter value",
     "email_err":"Incorrect email! Enter the correct data",
     "isContainsNumber_err":"This field cannot contain numbers. Please enter correct data",
-    "isPhoneNumber_err":"Invalid phone number. Please enter correct number"
+    "isPhoneNumber_err":"Invalid phone number. Please enter correct number",
+    "isUnique_err":"This data has already been taken"
 }
