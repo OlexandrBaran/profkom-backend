@@ -10,7 +10,7 @@ const path = require('path')
 const {generateUploadURL} = require('./s3')
 
 
-const PORT = process.env.PORT || 8000; 
+const PORT = process.env.PORT || 5000; 
 
  
 const app = express();
