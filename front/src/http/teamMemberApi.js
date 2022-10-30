@@ -11,3 +11,13 @@ export const fetchTeamMember = async () => {
     const {data} = await $host.get('team')
     return data
 }
+
+export const updateTeamMember = async (id, team_member) => {
+    const {data} = await $host.put(`team/:${id}`, team_member)
+    return data
+}
+
+export const deleteTeamMember = async (id) => {
+    const {data} = await $host.delete(`team/:${id}`)
+    return data
+}

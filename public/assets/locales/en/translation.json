@@ -133,5 +133,26 @@
     "email_err":"Incorrect email! Enter the correct data",
     "isContainsNumber_err":"This field cannot contain numbers. Please enter correct data",
     "isPhoneNumber_err":"Invalid phone number. Please enter correct number",
-    "isUnique_err":"This data has already been taken"
+    "isUnique_err":"This data has already been taken",
+    "Driving_School":"UzhNU Driving School",
+    "Program_for_orphans":"Program for orphan students",
+    "Program_for_disabled":"Program for disabled students",
+    "ISIC":"ISIC",
+    "indicators_views":"REVIEWS",
+    "indicators_isic":"ISIC CARDHOLDERS",
+    "indicators_members":"MEMBERS OF THE ORGANIZATION",
+    "indicators_subsidies":"SUBSIDIES APPROVED",
+    "profkom_structure":"PROFKOM STRUCTURE",
+    "docs_regulation":"Regulation documents",
+    "docs_tradeUnion":"Trade union documents",
+    "docs_samples_statemans":"Samples statemans",
+    "docs_unsversity_statute":"Statute of Uzhhorod National University",
+    "docs_agreement":"Agreement between the administration and the primary trade union organization of students",
+    "docs_regulation_about_stud_gov":"REGULATION «On student self-government of the State higher educational institution «Uzhgorod National University»",
+    "docs_ua_law_about_TU":"Law of Ukraine «On Trade Unions, Their Rights and Guarantees of Activity»",
+    "docs_trade_union_statute":"STATUTE OF THE TRADE UNION OF EDUCATION AND SCIENCE EMPLOYEES OF UKRAINE",
+    "sample_statement_disabled":"Sample application for a discount in a chummery",
+    "sample_statement_orphan_full":"Sample application for admission to full state maintenance",
+    "sample_statement_orphan_partial":"Sample application for acceptance for partial state maintenance"
+
 }

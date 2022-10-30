@@ -1,29 +1,48 @@
+import {FaStreetView} from 'react-icons/fa'
+import {AiFillCreditCard} from 'react-icons/ai'
+import {BsFillPeopleFill} from 'react-icons/bs'
+import {BiDockRight} from 'react-icons/bi'
+
+
+
+
+
+/*
+export default function updateVisitCount() {
+	fetch('https://api.countapi.xyz/update/profkom.herokuapp.com/profkom?amount=1')
+	.then(res => res.json())
+	.then(res => {
+	    return res.value;
+	})
+}
+updateVisitCount();*/
+
 export const indicators = [
     {
         id:1,
-        titleUA:"ПЕРЕГЛЯДІВ",
-        titleEN:"REVIEWS",
-        count:14000
+        title:"indicators_views",
+        count:13000,
+        icon:<FaStreetView size={56}/>
     },
 
     {
         id:2,
-        titleUA:"ВЛАСНИКІВ КАРТИ ISIC",
-        titleEN:"ISIC CARDHOLDERS",
-        count:248
+        title:"indicators_isic",
+        count:148,
+        icon:<AiFillCreditCard size={56}/>
     },
 
     {
         id:3,
-        titleUA:"ЧЛЕНІВ ОРГАНІЗАЦІЇ",
-        titleEN:"MEMBERS OF THE ORGANIZATION",
-        count:8912
+        title:"indicators_members",
+        count:7913,
+        icon:<BsFillPeopleFill size={56}/>
     },
 
     {
         id:4,
-        titleUA:"ОФОРМЛЕНИХ СУБСИДІЙ",
-        titleEN:"SUBSIDIES APPROVED",
-        count:598
+        title:"indicators_subsidies",
+        count:498,
+        icon:<BiDockRight size={56}/>
     }
 ]

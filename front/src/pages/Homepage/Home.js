@@ -2,8 +2,8 @@ import { useContext } from 'react';
 import { Context } from '../..';
 import Slider from '../../components/HomepageEl/Slider/Slider'
 import NewsBlock from '../../components/HomepageEl/NewsBlock/NewsBlock';
-import CurrentIndicators from '../../components/HomepageEl/CurrentIndicators/CurrentIndicators';
-import SocProgramsBlock from '../../components/HomepageEl/SocialPrograms/SocProgramsBlock';
+import CurrentIndicators from '../../components/HomepageEl/CurrentIndicators';
+import SocialPrograms from '../../components/HomepageEl/SocialPrograms';
 
 const Home = () => {
      
@@ -28,11 +28,8 @@ const Home = () => {
             <>     
                 <Slider newsList={lastestNews}/>
                 <NewsBlock newsList={lastestNews.slice(0, 3)}/>
-                 <CurrentIndicators
-                    bgColor = {appTheme.mainColor}
-                    mainColor = {appTheme.secondaryColor}
-                />
-                <SocProgramsBlock/>
+                 <CurrentIndicators/>
+                <SocialPrograms/>
             </>
     );
 }

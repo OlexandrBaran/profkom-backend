@@ -73,6 +73,17 @@ class TeamMemberController {
     }
 
     async update(req, res) {
+        const {id} = req.params
+        await TeamMember.update(
+            req.body,
+            {
+                where: {id}
+            },
+        )
+        res.send({ message: `Element with id ${id} was updated successfully!` });
+    }
+
+    async deleteOne(req, res) {
         const {id} = req.params;
         await TeamMember.destroy(
             {
@@ -80,10 +91,6 @@ class TeamMemberController {
             },
         )
         res.send({ message: `Element with id ${id} was deleted successfully!` });
-    }
-
-    async deleteOne(req, res) {
-
     }
 }
 
