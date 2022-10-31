@@ -18,6 +18,6 @@ export const updateTeamMember = async (id, team_member) => {
 }
 
 export const deleteTeamMember = async (id) => {
-    const {data} = await $host.delete(`team/:${id}`)
+    const {data} = await $authHost.delete(`team/${id}`)
     return data
 }
