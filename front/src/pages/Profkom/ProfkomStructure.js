@@ -6,7 +6,7 @@ import { Context } from "../..";
 
 const Image = styled.img`
     margin: 5px;
-    width:70%;
+    max-width:90%;
     border: 1px solid #273744;
     border-radius:25px;
     margin-bottom:5%;

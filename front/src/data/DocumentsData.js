@@ -36,18 +36,18 @@ export const samplesStatemans = [
     {
         id:1,
         title:'sample_statement_disabled',
-        link:"https://profkom-bucket.s3.amazonaws.com/%D0%B7%D1%80%D0%B0%D0%B7%D0%BE%D0%BA-%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8-%D1%96%D0%BD%D0%B2%D0%B0%D0%BB%D1%96%D0%B4%D0%B8.docx"
+        link:"https://profkom-bucket.s3.amazonaws.com/%D0%B7%D1%80%D0%B0%D0%B7%D0%BE%D0%BA-%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8-%D1%96%D0%BD%D0%B2%D0%B0%D0%BB%D1%96%D0%B4%D0%B8+(1).pdf"
     },
     {
         id:2,
         title:'sample_statement_orphan_full',
-        link:"https://profkom-bucket.s3.amazonaws.com/%D0%B7%D1%80%D0%B0%D0%B7%D0%BE%D0%BA-%D0%B7%D0%B0%D1%8F%D0%B2%D0%B0-%D0%BD%D0%B0-%D0%BF%D0%BE%D0%B2%D0%BD%D0%B5.docx"
+        link:"https://profkom-bucket.s3.amazonaws.com/%D0%B7%D1%80%D0%B0%D0%B7%D0%BE%D0%BA-%D0%B7%D0%B0%D1%8F%D0%B2%D0%B0-%D0%BD%D0%B0-%D0%BF%D0%BE%D0%B2%D0%BD%D0%B5.pdf"
     },
 
     {
         id:3,
         title:'sample_statement_orphan_partial',
-        link:"https://profkom-bucket.s3.amazonaws.com/%D0%B7%D1%80%D0%B0%D0%B7%D0%BE%D0%BA-%D0%B7%D0%B0%D1%8F%D0%B2%D0%B0-%D0%BD%D0%B0-%D0%BD%D0%B5%D0%BF%D0%BE%D0%B2%D0%BD%D0%B5.docx"
+        link:"https://profkom-bucket.s3.amazonaws.com/%D0%B7%D1%80%D0%B0%D0%B7%D0%BE%D0%BA-%D0%B7%D0%B0%D1%8F%D0%B2%D0%B0-%D0%BD%D0%B0-%D0%BD%D0%B5%D0%BF%D0%BE%D0%B2%D0%BD%D0%B5.pdf"
     }
 ]
 
