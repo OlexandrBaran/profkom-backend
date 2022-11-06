@@ -153,6 +153,9 @@
     "docs_trade_union_statute":"СТАТУТ ПРОФСПІЛКИ ПРАЦІВНИКІВ ОСВІТИ І НАУКИ УКРАЇНИ",
     "sample_statement_disabled":"Зразок заяви на знижку в гуртожитку",
     "sample_statement_orphan_full":"Зразок заяви на прийняття на повне державне утримання",
-    "sample_statement_orphan_partial":"Зразок заяви на прийняття на неповне державне утримання"
+    "sample_statement_orphan_partial":"Зразок заяви на прийняття на неповне державне утримання",
+    "question_delete":"Ви дійсно хочете видалити ",
+    "yes":"Так",
+    "no":"Ні"
 
 }

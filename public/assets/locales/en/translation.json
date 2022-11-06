@@ -153,6 +153,8 @@
     "docs_trade_union_statute":"STATUTE OF THE TRADE UNION OF EDUCATION AND SCIENCE EMPLOYEES OF UKRAINE",
     "sample_statement_disabled":"Sample application for a discount in a chummery",
     "sample_statement_orphan_full":"Sample application for admission to full state maintenance",
-    "sample_statement_orphan_partial":"Sample application for acceptance for partial state maintenance"
-
+    "sample_statement_orphan_partial":"Sample application for acceptance for partial state maintenance",
+    "question_delete":"You really want to delete ",
+    "yes":"Yes",
+    "no":"No"
 }
