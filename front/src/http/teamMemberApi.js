@@ -13,7 +13,7 @@ export const fetchTeamMember = async () => {
 }
 
 export const updateTeamMember = async (id, team_member) => {
-    const {data} = await $host.put(`team/:${id}`, team_member)
+    const {data} = await $authHost.put(`team/${id}`, team_member)
     return data
 }
 
