@@ -7,7 +7,7 @@ const cors = require('cors')
 //const models = require("./models/models")
 
 //const sequelize = require('./db');
-//const router = require('./routes/index');
+const router = require('./routes/index');
 //const errorHandler = require('./middleware/errorHandlingMiddleware');
 //const fileUpload = require('express-fileupload');
 //const path = require('path')
@@ -20,9 +20,10 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use('/', router);
 /*app.use(express.static(path.resolve(__dirname, 'public')))
 app.use(fileUpload({}));
-app.use('/', router);
+
 
 app.get('/s3Url', async (req, res) => {
     const url = await generateUploadURL()

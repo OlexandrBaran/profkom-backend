@@ -1,80 +1,82 @@
-import AdditionalPointsRequest from '../models/additionalPointReq.js'
-import mongoose from 'mongoose';
-import multer from "multer";
-import AWS from "aws-sdk";
-import fs from "fs";
-import path from "path";
-import uuid from 'uuid';
+const AdditionalPointsRequest = require('../models/additionalPointReq.js')
+const mongoose = require('mongoose');
+const multer = require('multer');
+const multerS3 = require('multer-s3');
+const uuid = require('uuid');
+const AWS = require('aws-sdk');
+//import fs from "fs";
+//import path from "path";
 //const ApiError = require('../error/ApiError');
 
 
 const s3 = new AWS.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  });
+    region: process.env.AWS_BUCKET_REGION,
+});
 
-const storage = multer.memoryStorage({
-    destination: function (req, file, callback) {
-      callback(null, "");
-    },
+const upload = multer({
+    storage: multerS3({
+      s3,
+      bucket: process.env.AWS_BUCKET_NAME,
+      acl: 'public-read',
+      contentType: multerS3.AUTO_CONTENT_TYPE,
+      key: function (req, file, cb) {
+        const extension = file.originalname.split('.').pop();
+        const filename = `${uuid.v4()}.${extension}`;
+        cb(null, filename);
+      },
+    }),
   });
-
+  
 const create = async (req, res) => {
     try {
-      const additionalPointsRequest = new AdditionalPointsRequest(req.body);
-      await additionalPointsRequest.save();
-      res.status(201).json(additionalPointsRequest);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-};
-
-
-const createAdditionalPointsRequest = async (req, res) => {
-    try {
-      upload(req, res, async function (err) {
-        if (err) {
-          return res.status(400).json({ message: err.message });
-        }
-  
-        const { name, email, department, course, category, description } = req.body;
-        const file = req.file;
-  
-        const params = {
-          Bucket: process.env.AWS_BUCKET_NAME,
-          Key: file.originalname,
-          Body: file.buffer,
-        };
-  
-        // Upload file to S3 bucket
-        s3.upload(params, async (err, data) => {
-          if (err) {
-            return res.status(400).json({ message: err.message });
-          }
-  
-          const additionalPointsRequest = new AdditionalPointsRequest({
-            name,
-            email,
-            department,
-            course,
-            category,
-            description,
-            file: data.Location,
-          });
-  
-          await additionalPointsRequest.save();
-  
-          return res.status(201).json({
-            message: "Additional points request created successfully",
-            additionalPointsRequest,
-          });
-        });
+      upload.single('file')
+      const { name, email, department, course, category, description } = req.body;
+      console.log({ name, email, department, course, category, description });
+      const fileUrl = req.file.location;
+      const additionalPointsRequest = await AdditionalPointsRequest.create({
+        name,
+        email,
+        department,
+        course,
+        category,
+        description,
+        file: fileUrl,
       });
+      return res.status(201).json(additionalPointsRequest);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: err.message });
+    }
+  };
+  
+  const getOne = async (req, res) => {
+    try {
+      const additionalPointsRequest = await AdditionalPointsRequest.findById(
+        req.params.id
+      );
+  
+      if (!additionalPointsRequest) {
+        return res.status(404).json({ message: "Additional points request not found" });
+      }
+  
+      return res.status(200).json(additionalPointsRequest);
     } catch (error) {
       return res.status(500).json({ message: error.message });
     }
   };
+
+
+  const getAll = async (req, res) => {
+    try {
+      const additionalPointsRequests = await AdditionalPointsRequest.find();
   
+      return res.status(200).json(additionalPointsRequests);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  };
 
 
 
@@ -100,28 +102,11 @@ const createAdditionalPointsRequest = async (req, res) => {
 
 
 
-
-
-
+/*
 
 class AdditionalPointsRequestController {
-    async create(req, res, next) {
-        try {
-            const {name, email, department, course, category, description} = req.body;
-            const {file} = req.files;
-            let fileName = uuid.v4() + ".pdf";
-            file.mv(path.resolve(__dirname, '..', 'static', fileName))
-    
-            const addPointReq = AdditionalPointsRequest.create({name, email, department, course, category, description,
-                 file:fileName 
-            });
-            res.json(addPointReq);
-        } catch (error) {
-          //  next(ApiError.badRequest(error.message))
-        }
-    }
 
-    async getAll(req, res) {
+    /*async getAll(req, res) {
         let {limit, page} = req.query;
         page = page || 1;
         limit = limit || 10;
@@ -158,6 +143,7 @@ class AdditionalPointsRequestController {
         )
         res.send({ message: `Element with id ${id} was deleted successfully!` });
     }
-}
+} 
+*/
 
-module.exports = new AdditionalPointsRequestController()
+module.exports = {create, getAll, getOne}

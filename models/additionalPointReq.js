@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const additionalPointsRequestSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -12,4 +12,4 @@ const additionalPointsRequestSchema = new mongoose.Schema({
 
 const AdditionalPointsRequest = mongoose.model('AdditionalPointsRequest', additionalPointsRequestSchema);
 
-export default AdditionalPointsRequest;
+module.exports = AdditionalPointsRequest;
