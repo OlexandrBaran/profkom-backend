@@ -146,4 +146,4 @@ class AdditionalPointsRequestController {
 } 
 */
 
-module.exports = {create, getAll, getOne}
+module.exports = {create, getAll, getOne} 

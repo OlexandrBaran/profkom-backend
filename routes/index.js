@@ -13,7 +13,7 @@ const questionAnswerRouter = require('./questionAnswerRouter');
 const ratingRouter = require('./ratingRouter');
 const trustBoxRequestRouter = require('./trustBoxRequestRouter');*/
 
-const router = express.Router(); 
+const router = express.Router();  
 
 router.use('/addPointReq', additionalPointsRequestRouter)
 
