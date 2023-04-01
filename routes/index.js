@@ -1,33 +1,40 @@
 const express = require('express')
-const additionalPointsRequestRouter = require('./additionalPointsRequestRouter');
-/*const userRouter = require('./userRouter');
-const teamMemberRouter = require('./teamMemberRouter');
+
 const additionalPointsRequestRouter = require('./additionalPointsRequestRouter');
 const additionalPointsResultRouter = require('./additionalPointsResultRouter');
 const announcementRouter = require('./announcementRouter');
+const newsRouter = require('./newsRouter');
 const chummeryRouter = require('./chummeryRouter');
 const haveIdeaRequestRouter = require('./haveIdeaRequestRouter');
-const newsRouter = require('./newsRouter');
-const pollRouter = require('./pollRouter');
-const questionAnswerRouter = require('./questionAnswerRouter');
+const trustBoxRequestRouter = require('./trustBoxRequestRouter')
+const teamMemberRouter = require('./teamMemberRouter');
 const ratingRouter = require('./ratingRouter');
-const trustBoxRequestRouter = require('./trustBoxRequestRouter');*/
+const questionAnswerRouter = require('./questionAnswerRouter');
+const photoGalleryItemRouter = require('./photoGalleryItemRouter');
+const questionRouter = require('./questionRouter')
 
-const router = express.Router();  
+/*
+const userRouter = require('./userRouter');
+const pollRouter = require('./pollRouter');
+*/
 
-router.use('/addPointReq', additionalPointsRequestRouter)
+const router = express.Router();   
 
-/*router.use('/user', userRouter)
-router.use('/team', teamMemberRouter)
 router.use('/addPointReq', additionalPointsRequestRouter)
 router.use('/addPointRes', additionalPointsResultRouter)
-router.use('/announcement', announcementRouter)
-router.use('/chummery', chummeryRouter)
-router.use('/haveIdeaReq', haveIdeaRequestRouter)
+router.use('/announcements', announcementRouter)
 router.use('/news', newsRouter)
+router.use('/chummeries', chummeryRouter)
+router.use('/haveIdeaReqs', haveIdeaRequestRouter)
+router.use('/trustBoxReqs', trustBoxRequestRouter)
+router.use('/team', teamMemberRouter)
+router.use('/ratings', ratingRouter)
+router.use('/questionAnswers', questionAnswerRouter)
+router.use('/photoGalleryItems', photoGalleryItemRouter)
+router.use('/questions', questionRouter)
+
+/*router.use('/user', userRouter)
 router.use('/poll', pollRouter)
-router.use('/questionAnswer', questionAnswerRouter)
-router.use('/rating', ratingRouter)
-router.use('/trustBoxReq', trustBoxRequestRouter)*/
+*/
 
 module.exports = router;

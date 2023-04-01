@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const ratingSchema = new mongoose.Schema({
   department: { type: String, required: true },
@@ -8,4 +8,4 @@ const ratingSchema = new mongoose.Schema({
 
 const Rating = mongoose.model('Rating', ratingSchema);
 
-export default Rating
+module.exports = Rating

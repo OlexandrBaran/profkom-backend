@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const trustBoxRequestSchema = new mongoose.Schema({
   department: { type: String, required: true },
@@ -8,4 +8,4 @@ const trustBoxRequestSchema = new mongoose.Schema({
 
 const TrustBoxRequest = mongoose.model('TrustBoxRequest', trustBoxRequestSchema);
 
-export default TrustBoxRequest;
+module.exports = TrustBoxRequest;

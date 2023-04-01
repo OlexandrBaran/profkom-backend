@@ -1,87 +1,109 @@
-const {News} = require('../models/models')
+const News = require('../models/news')
+const deleteFileFromS3 = require("../features/deleteFileFromS3")
+const getFileKey = require("../features/getFileKey")
 //const ApiError = require('../error/ApiError');
-const uuid = require('uuid');
-const path = require('path');
 
-class NewsController {
-    async create(req, res) {
-        try {
-            const { 
-                titleEN, 
-                titleUA, 
-                descriptionEN, 
-                descriptionUA, 
-                department, 
-                date, 
-                views, 
-                likes, 
-                author
-            } = req.body;
-            const {image} = req.files;
-            
-            let fileName = uuid.v4() + ".jpg";
-            image.mv(path.resolve(__dirname, '..', 'static', fileName))
-
-
-            const news = News.create({
-                titleEN,
-                titleUA, 
-                descriptionEN, 
-                descriptionUA, 
-                department, 
-                image:fileName, 
-                date, 
-                views, 
-                likes, 
-                author,
-            });
-
-                res.json(news); 
-
-            } catch (error) {
-                   // next(ApiError.badRequest(error.message))
-            }
+const create = async (req, res) => {
+    try {
+      const {title_ua, title_en, content_ua, content_en, department, author } = req.body;
+      const fileUrl = req.file.location;
+      const news = await News.create({
+        title_ua,
+        title_en, 
+        content_ua, 
+        content_en,        
+        department,  
+        author,
+        image: fileUrl,
+      });
+      return res.status(201).json(news);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: err.message });
     }
+};
 
-    async getOne(req, res) {
-        const {id} = req.params;
-        const news = await News.findOne(
-            {
-                where: {id}
-            },
-        )
-        return res.json(news); 
+const getOne = async (req, res) => {
+    try {
+      const news = await News.findById(req.params.id);
+  
+      if (!news) {
+        return res.status(404).json({ message: "News not found" });
+      }
+  
+      return res.status(200).json(news);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
     }
+};
 
-    async getAll(req, res) {
-        let {limit, page} = req.query;
-        page = page || 1;
-        limit = limit|| 9;
-        let offset = page * limit - limit;
-        let news = await News.findAndCountAll({limit, offset});
-        return res.json(news);
+const getAll = async (req, res) => {
+    try {
+      const news = await News.find();
+      return res.status(200).json(news);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
     }
+};
 
-    async update(req, res) {
+const update = async (req, res) => {
+    try {
         const {id} = req.params
-        await News.update(
-            req.body,
-            {
-                where: {id}
-            },
-        )
-        res.send({ message: `Element with id ${id} was updated successfully!` });
-    }
+        const news = await News.findById(id);
+    
+        if (!news) {
+          return res.status(404).json({ message: "News not found" });
+        }
+        deleteFileFromS3(getFileKey(news.image))
 
-    async deleteOne(req, res) {
-        const {id} = req.params;
-        await News.destroy(
-            {
-                where: {id}
-            },
-        )
-        res.send({ message: `Element with id ${id} was deleted successfully!` });
-    }
-}
+        const {title_ua, title_en, content_ua, content_en, department, author, likes, views } = req.body;
+        const fileUrl = req.file.location;
 
-module.exports = new NewsController()
+        await News.findOneAndUpdate({_id:id}, 
+            {
+              title_ua,
+              title_en, 
+              content_ua, 
+              content_en,   
+              department,  
+              author,
+              image: fileUrl,
+              likes,
+              views 
+          },
+          {new: true},
+          (error, data) => {
+            if (error) {
+              console.log(error);
+            } else {
+              console.log(data);
+            }
+          }
+        ).clone()
+
+      return res.status(200).json(`Element with ${id} was successfuly updated`);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+};
+
+const deleteOne = async (req, res) => {
+  try {
+    const {id} = req.params
+    const news = await News.findById(id);
+
+    if (!news) {
+      return res.status(404).json({ message: "News not found" });
+    }
+    const fileKey = getFileKey(news.image)
+    deleteFileFromS3(fileKey)
+
+    await News.findByIdAndDelete(id);
+    return res.status(200).json({ message: `Element with id ${id} was deleted successfully!` });
+
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = {create, getOne, getAll, update, deleteOne}

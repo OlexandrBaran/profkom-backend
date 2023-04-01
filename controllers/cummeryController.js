@@ -1,87 +1,130 @@
-const {Chummery} = require('../models/models')
+const Chummery = require('../models/chummery')
+const deleteFileFromS3 = require("../features/deleteFileFromS3")
+const getFileKey = require("../features/getFileKey")
 //const ApiError = require('../error/ApiError');
-const uuid = require('uuid');
-const path = require('path')
 
-
-class ChummeryController {
-    async create(req, res) {
-        try {
-            const { 
-                nameUA, 
-                nameEN, 
-                addressUA, 
-                addressEN, 
-                phone, 
-                comendantPhone, 
-                additionalInfoUA, 
-                additionalInfoEN
-            } = req.body;
-
-            const {image} = req.files;
-
-            let fileName = uuid.v4() + ".jpg";
-            image.mv(path.resolve(__dirname, '..', 'static', fileName))
-
-
-            const chummery = Chummery.create({
-                nameUA, 
-                nameEN, 
-                addressUA, 
-                addressEN, 
-                phone, 
-                comendantPhone, 
-                image:fileName,
-                additionalInfoUA, 
-                additionalInfoEN
-            });
-
-            res.json(chummery);
-
-        } catch (error) {
-            //next(ApiError.badRequest(error.message))  
-        }
+const create = async (req, res) => {
+    try {
+      const {
+        name_ua,
+        name_en,
+        address_en,
+        address_ua,
+        phone,
+        comendantPhone,
+        additionalInfo_en,
+        additionalInfo_ua
+      } = req.body;
+    
+      const fileUrl = req.file.location;
+      const chummery = await Chummery.create({
+        name_ua,
+        name_en,
+        address_en,
+        address_ua,
+        phone,
+        comendantPhone,
+        additionalInfo_en,
+        additionalInfo_ua,
+        image: fileUrl,
+      });
+      return res.status(201).json(chummery);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: err.message });
     }
+};
 
-    async getOne(req, res) {
-        const {id} = req.params;
-        const chummery = await Chummery.findOne(
-            {
-                where: {id}
-            },
-        )
-        return  res.json(chummery); 
+const getOne = async (req, res) => {
+    try {
+      const chummery = await Chummery.findById(req.params.id);
+  
+      if (!chummery) {
+        return res.status(404).json({ message: "Chummery not found" });
+      }
+  
+      return res.status(200).json(chummery);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
     }
+};
 
-    async getAll(req, res) {
-        let {limit, page} = req.query;
-        page = page || 1;
-        limit = limit || 9;
-        let offset = page * limit - limit;
-        let chummeries = await Chummery.findAndCountAll({limit, offset});
-        return res.json(chummeries);
+const getAll = async (req, res) => {
+    try {
+      const chummeries = await Chummery.find();
+      return res.status(200).json(chummeries);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
     }
+};
 
-    async update(req, res) {
+const update = async (req, res) => {
+    try {
         const {id} = req.params
-        await Chummery.update(
-            req.body,
-            {
-                where: {id}
-            },
-        )
-        res.send({ message: `Element with id ${id} was updated successfully!` });
-    }
+        const chummery = await Chummery.findById(id);
+    
+        if (!chummery) {
+          return res.status(404).json({ message: "Chummery not found" });
+        }
+        deleteFileFromS3(getFileKey(chummery.image))
 
-    async deleteOne(req, res) {
-        const {id} = req.params;
-        await Chummery.destroy(
-            {
-                where: {id}
-            },
-        )
-        res.send({ message: `Element with id ${id} was deleted successfully!` });
-    }
-}
+        const {
+            name_ua,
+            name_en,
+            address_en,
+            address_ua,
+            phone,
+            comendantPhone,
+            additionalInfo_en,
+            additionalInfo_ua
+          } = req.body;
+        const fileUrl = req.file.location;
 
-module.exports = new ChummeryController()
+        await Chummery.findOneAndUpdate({_id:id}, 
+            {
+                name_ua,
+                name_en,
+                address_en,
+                address_ua,
+                phone,
+                comendantPhone,
+                additionalInfo_en,
+                additionalInfo_ua,
+                image: fileUrl,      
+          },
+          {new: true},
+          (error, data) => {
+            if (error) {
+              console.log(error);
+            } else {
+              console.log(data);
+            }
+          }
+        ).clone()
+
+      return res.status(200).json(`Element with ${id} was successfuly updated`);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+};
+
+const deleteOne = async (req, res) => {
+  try {
+    const {id} = req.params
+    const chummery = await Chummery.findById(id);
+
+    if (!chummery) {
+      return res.status(404).json({ message: "Chummery not found" });
+    }
+    const fileKey = getFileKey(chummery.image)
+    deleteFileFromS3(fileKey)
+
+    await Chummery.findByIdAndDelete(id);
+    return res.status(200).json({ message: `Element with id ${id} was deleted successfully!` });
+
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = {create, getOne, getAll, update, deleteOne}

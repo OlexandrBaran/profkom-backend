@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const additionalPointsResultSchema = new mongoose.Schema({
   department: { type: String, required: true },
@@ -8,4 +8,4 @@ const additionalPointsResultSchema = new mongoose.Schema({
 
 const AdditionalPointsResult = mongoose.model('AdditionalPointsResult', additionalPointsResultSchema);
 
-export default AdditionalPointsResult;
+module.exports = AdditionalPointsResult;

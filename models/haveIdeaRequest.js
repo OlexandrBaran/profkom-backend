@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const haveIdeaRequestSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -10,4 +10,4 @@ const haveIdeaRequestSchema = new mongoose.Schema({
 
 const HaveIdeaRequest = mongoose.model('HaveIdeaRequest', haveIdeaRequestSchema);
 
-export default HaveIdeaRequest;
+module.exports = HaveIdeaRequest;
