@@ -48,33 +48,18 @@ const update = async (req, res) => {
           return res.status(404).json({ message: "Question not found" });
         }
     
-        const {questionText_en, questionText_ua, questionType, option_en, option_ua, optionIndex, votedIndexes, extended_answer} = req.body;
-        question.questionText_en = questionText_en || question.questionText_en;
-        question.questionText_ua = questionText_ua || question.questionText_ua;
-
-        switch (questionType) {
-            case 'single_choice':
-            case 'multiple_choice':
-                if (option_en && optionIndex) 
-                    question.options_en[optionIndex] = option_en; 
-                if (option_en && optionIndex) 
-                    question.options_ua[optionIndex] = option_ua; 
-                if (votedIndexes)
-                  votedIndexes.map( votedIndex => question.votes[votedIndex]++)
-                break;
-            case 'short_answer':
-            case 'long_answer':
-                question.extended_answers.push(extended_answer)
-                break;
-            default:
-                break;
-        }
-        
-
-
+        const {questionText_en, questionText_ua, questionType, options_en, options_ua, votes, extended_answers} = req.body;
 
         await Question.findOneAndUpdate({_id:id}, 
-          question,
+          {
+            questionText_en,
+            questionText_ua, 
+            questionType, 
+            options_en, 
+            options_ua, 
+            votes, 
+            extended_answers
+          },
           {new: true},
           (error, data) => {
             if (error) {

@@ -1,63 +1,98 @@
 const Survey = require('../models/survey')
 //const ApiError = require('../error/ApiError');
 
+const create = async(req, res) => {
+    try {
+        const {title_en, title_ua, department, description_en, description_ua} = req.body;
 
-/*
-class PollController {
-    async create(req, res, next) {
-        try {
-            const {
-                questionUA,
-                questionEN,
-                department,
-                descriptionEN,
-                descriptionUA,
-                status,
-                options,
-                votes,
-                votedUsersId
-            } = req.body;
-            let optionsArray = Object.keys(options).map((key) => [options[key]]);
-            let votesArray = Object.keys(votes).map((key) => [votes[key]]);
-            let votedUsersIdArray = Object.keys(votedUsersId).map((key) => [votedUsersId[key]]);
+        const survey = await Survey.create({
+            title_en, title_ua, department, description_en, description_ua
+        });
+        return res.status(201).json(survey); 
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: err.message });
+    }
+};
 
-            const poll = Poll.create(
-                {
-                    questionUA,
-                    questionEN,
-                    department,
-                    descriptionEN,
-                    descriptionUA,
-                    status,
-                    options:optionsArray,
-                    votes:votesArray,
-                    votedUsersId:votedUsersIdArray
-                }
-            )
-            res.json(poll)
-        } catch (error) {
-            //next(ApiError.badRequest(error.message))
+const getOne = async (req, res) => {
+    try {
+      const survey = await Survey.findById(req.params.id);
+  
+      if (!survey) {
+        return res.status(404).json({ message: "Survey not found" });
+      }
+  
+      return res.status(200).json(survey);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+};
+
+const getAll = async (req, res) => {
+    try {
+      const survey = await Survey.find();
+      return res.status(200).json(survey);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+};
+
+const update = async (req, res) => {
+    try {
+        const {id} = req.params
+        const survey = await Survey.findById(id);
+    
+        if (!survey) {
+          return res.status(404).json({ message: "Survey not found" });
         }
-    }
+    
+        const {title_en, title_ua, department, description_en, description_ua, status, questionsId, votedUsersId} = req.body;
 
-    async getOne(req, res) {
-        const {id} = req.params;
-        const poll = await Poll.findOne(
+        await Survey.findOneAndUpdate({_id:id}, 
             {
-                where: {id}
+                title_en,
+                title_ua, 
+                department, 
+                description_en, 
+                description_ua, 
+                status, 
+                questionsId, 
+                votedUsersId
             },
-        )
-        return res.json(poll); 
-    }
+          {new: true},
+          (error, data) => {
+            if (error) {
+              console.log(error);
+            } else {
+              console.log(data);
+            }
+          }
+        ).clone()
 
-    async getAll(req, res) {
-        let {limit, page} = req.query;
-        page = page || 1;
-        limit = limit|| 9;
-        let offset = page * limit - limit;
-        let poll = await Poll.findAndCountAll({limit, offset});
-        return res.json(poll);
+      return res.status(200).json(`Element with ${id} was successfuly updated`);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
     }
+};
+
+const deleteOne = async (req, res) => {
+    try {
+      const {id} = req.params
+      const survey = await Survey.findById(id);
+
+      if (!survey) {
+        return res.status(404).json({ message: "Survey not found" });
+      }
+  
+      await Survey.findByIdAndDelete(id);
+      return res.status(200).json({ message: `Element with id ${id} was deleted successfully!` });
+  
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+};
+/*
 
     async update(req, res) {
         const {id} = req.params
@@ -81,4 +116,4 @@ class PollController {
     }
 }
 */
-module.exports = {}
+module.exports = {create, getOne, getAll, update, deleteOne}
